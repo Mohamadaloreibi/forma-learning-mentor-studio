@@ -1,5 +1,6 @@
 import { createContext, useContext, type Dispatch, type SetStateAction } from "react";
 import type { Agent } from "@/lib/workplace";
+import type { PracticeAttempt, LessonHandoff } from "@/lib/practice";
 
 type ChatMessage = { role: "user" | "assistant"; text: string };
 interface WorkplaceState {
@@ -17,6 +18,10 @@ interface WorkplaceState {
   }) => void;
   messages: ChatMessage[];
   setMessages: Dispatch<SetStateAction<ChatMessage[]>>;
+  practiceAttempts: Record<string, PracticeAttempt>;
+  savePractice: (id: string, attempt: PracticeAttempt) => void;
+  lessonHandoff: LessonHandoff | null;
+  setLessonHandoff: (handoff: LessonHandoff | null) => void;
 }
 
 // Keep context identity outside the component refresh boundary. Both an existing

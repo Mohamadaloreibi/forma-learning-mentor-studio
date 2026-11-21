@@ -1,18 +1,21 @@
 import { useState, type ReactNode } from "react";
 import { initialAgents, type Agent } from "@/lib/workplace";
 import { WorkplaceContext } from "./context";
+import { addCompletedLesson, type PracticeAttempt, type LessonHandoff } from "@/lib/practice";
 export function WorkplaceProvider({ children }: { children: ReactNode }) {
   const [agents, setAgents] = useState(initialAgents);
   const [completed, setCompleted] = useState<string[]>([
-    "foundations-1",
-    "foundations-2",
-    "foundations-3",
     "prompt-1",
     "prompt-2",
     "safety-1",
     "safety-2",
+    "safety-3",
     "productivity-1",
+    "productivity-2",
+    "productivity-3",
   ]);
+  const [practiceAttempts, setPracticeAttempts] = useState<Record<string, PracticeAttempt>>({});
+  const [lessonHandoff, setLessonHandoff] = useState<LessonHandoff | null>(null);
   const [profile, setProfile] = useState({
     name: "Alex Morgan",
     role: "Product designer",
@@ -42,7 +45,11 @@ export function WorkplaceProvider({ children }: { children: ReactNode }) {
               : [agent, ...prev],
           ),
         completed,
-        completeLesson: (id) => setCompleted((prev) => (prev.includes(id) ? prev : [...prev, id])),
+        completeLesson: (id) => setCompleted((prev) => addCompletedLesson(prev, id)),
+        practiceAttempts,
+        savePractice: (id, attempt) => setPracticeAttempts((prev) => ({ ...prev, [id]: attempt })),
+        lessonHandoff,
+        setLessonHandoff,
         profile,
         setProfile,
         preferences,

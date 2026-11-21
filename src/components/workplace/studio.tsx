@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Play, Save, ArrowRight, ShieldCheck, Check, RotateCcw } from "lucide-react";
+import {
+  Play,
+  Save,
+  ArrowRight,
+  ShieldCheck,
+  Check,
+  RotateCcw,
+  BookOpen as BookOpenIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,7 +25,7 @@ import { requestReview, type Agent } from "@/lib/workplace";
 const sample =
   "Monday design meeting\nJamie: Share homepage mockups by Wednesday.\nTaylor: Review the mockups on Thursday.\nDecision: Keep the launch scope focused on the core experience.";
 export function Studio({ agentId }: { agentId?: string }) {
-  const { agents, saveAgent } = useWorkplace();
+  const { agents, saveAgent, lessonHandoff } = useWorkplace();
   const existing = agents.find((a) => a.id === agentId);
   const [id] = useState(existing?.id ?? `agent-${Date.now()}`);
   const [name, setName] = useState(existing?.name ?? "");
@@ -25,7 +33,8 @@ export function Studio({ agentId }: { agentId?: string }) {
   const [category, setCategory] = useState(existing?.category ?? "Productivity");
   const [instructions, setInstructions] = useState(
     existing?.instructions ??
-      "Use only the information provided. Write a concise summary and list action items with owners. Never invent details. Ask for clarification when needed.",
+      (lessonHandoff?.prompt ||
+        "Use only the information provided. Write a concise summary and list action items with owners. Never invent details. Ask for clarification when needed."),
   );
   const [input, setInput] = useState(sample);
   const [output, setOutput] = useState("");
@@ -63,6 +72,12 @@ export function Studio({ agentId }: { agentId?: string }) {
           </Button>
         }
       />
+      {!existing && lessonHandoff && (
+        <div className="lesson-context-note">
+          <BookOpenIcon />
+          From AI Academy · {lessonHandoff.topic} · Your practice prompt is in Agent instructions.
+        </div>
+      )}
       <div className="studio-layout">
         <section className="studio-column">
           <p className="studio-step">01 · GIVE YOUR AGENT A PURPOSE</p>

@@ -7,6 +7,8 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 import { PageHeading } from "./shell";
 import { useWorkplace } from "./context";
 import art from "@/assets/forma-learning.asset.json";
+import { evaluatePractice, nextLessonIndex } from "@/lib/practice";
+import { PracticeFeedback } from "./practice-feedback";
 const paths = [
   {
     id: "prompt",
@@ -55,12 +57,19 @@ const paths = [
   },
 ];
 export function Academy() {
-  const { completed, completeLesson } = useWorkplace();
+  const { completed, completeLesson, practiceAttempts, savePractice, setLessonHandoff } =
+    useWorkplace();
   const [filter, setFilter] = useState("For you");
   const [active, setActive] = useState<(typeof paths)[number] | null>(null);
   const [lesson, setLesson] = useState(2);
-  const [exercise, setExercise] = useState("");
-  const [feedback, setFeedback] = useState("");
+  const exerciseId = active ? `${active.id}-${lesson + 1}` : "";
+  const attempt = practiceAttempts[exerciseId];
+  const exercise = attempt?.prompt ?? "";
+  const topic = active?.lessons[lesson] ?? "";
+  const visiblePaths = paths.filter(
+    (p) =>
+      filter !== "Completed" || p.lessons.every((_, i) => completed.includes(`${p.id}-${i + 1}`)),
+  );
   return (
     <div className="content-enter">
       <PageHeading
@@ -80,50 +89,48 @@ export function Academy() {
         ))}
       </div>
       <div className="module-grid">
-        {paths
-          .filter(
-            (p) =>
-              filter !== "Completed" ||
-              p.lessons.every((_, i) => completed.includes(`${p.id}-${i + 1}`)),
-          )
-          .map((p) => (
-            <article className="learning-path" key={p.id}>
-              <div className={`path-art ${p.style}`}>
-                {p.id === "prompt" ? (
-                  <img src={art.url} alt="Blue sculptural ribbon with mint and peach shapes" />
-                ) : (
-                  <p.icon />
-                )}
+        {visiblePaths.map((p) => (
+          <article className="learning-path" key={p.id}>
+            <div className={`path-art ${p.style}`}>
+              {p.id === "prompt" ? (
+                <img src={art.url} alt="Blue sculptural ribbon with mint and peach shapes" />
+              ) : (
+                <p.icon />
+              )}
+            </div>
+            <div className="path-content">
+              <span className="mini-label">{p.tag}</span>
+              <h2>{p.name}</h2>
+              <p>{p.description}</p>
+              <div className="course-progress">
+                <BookOpen size={12} />
+                {p.lessons.length} short lessons{" "}
+                <span className="ml-auto">
+                  {p.lessons.filter((_, i) => completed.includes(`${p.id}-${i + 1}`)).length}{" "}
+                  completed
+                </span>
               </div>
-              <div className="path-content">
-                <span className="mini-label">{p.tag}</span>
-                <h2>{p.name}</h2>
-                <p>{p.description}</p>
-                <div className="course-progress">
-                  <BookOpen size={12} />
-                  {p.lessons.length} short lessons{" "}
-                  <span className="ml-auto">
-                    {p.lessons.filter((_, i) => completed.includes(`${p.id}-${i + 1}`)).length}{" "}
-                    completed
-                  </span>
-                </div>
-                <Button
-                  className="w-full"
-                  variant={p.id === "prompt" ? "default" : "outline"}
-                  onClick={() => {
-                    setActive(p);
-                    setLesson(p.id === "prompt" ? 2 : 0);
-                    setFeedback("");
-                    setExercise("");
-                  }}
-                >
-                  Continue learning <ArrowRight />
-                </Button>
-              </div>
-            </article>
-          ))}
+              <progress
+                className="academy-progress"
+                aria-label={`${p.name} progress`}
+                max={p.lessons.length}
+                value={p.lessons.filter((_, i) => completed.includes(`${p.id}-${i + 1}`)).length}
+              />
+              <Button
+                className="w-full"
+                variant={p.id === "prompt" ? "default" : "outline"}
+                onClick={() => {
+                  setActive(p);
+                  setLesson(nextLessonIndex(p.id, p.lessons.length, completed));
+                }}
+              >
+                Continue learning <ArrowRight />
+              </Button>
+            </div>
+          </article>
+        ))}
       </div>
-      {filter === "Completed" && (
+      {filter === "Completed" && visiblePaths.length === 0 && (
         <p className="empty-state">Finish a learning path to see it here.</p>
       )}
       <Dialog
@@ -146,8 +153,6 @@ export function Academy() {
                     variant={lesson === i ? "secondary" : "ghost"}
                     onClick={() => {
                       setLesson(i);
-                      setExercise("");
-                      setFeedback("");
                     }}
                   >
                     {completed.includes(`${active.id}-${i + 1}`) ? (
@@ -181,35 +186,41 @@ export function Academy() {
                   <Textarea
                     id="exercise"
                     value={exercise}
-                    onChange={(e) => setExercise(e.target.value)}
+                    onChange={(e) =>
+                      savePractice(exerciseId, { ...attempt, prompt: e.target.value })
+                    }
                     placeholder="Summarize the following fictional meeting notes…"
                   />
                   <Button
                     className="mt-4"
-                    disabled={exercise.trim().length < 20}
+                    disabled={!exercise.trim()}
                     onClick={() => {
-                      completeLesson(`${active.id}-${lesson + 1}`);
-                      setFeedback(
-                        "Practice complete. You gave AI a clear task — remember to include the source notes and check the output.",
-                      );
+                      savePractice(exerciseId, { prompt: exercise, submittedPrompt: exercise });
+                      if (evaluatePractice(exercise).complete) completeLesson(exerciseId);
                     }}
                   >
-                    Complete practice <Check />
+                    {attempt?.submittedPrompt ? "Try again" : "Complete practice"} <Check />
                   </Button>
-                  {feedback && (
-                    <p className="mt-4 text-primary" role="status">
-                      {feedback}
-                    </p>
-                  )}
                 </div>
+                {attempt?.submittedPrompt && (
+                  <PracticeFeedback
+                    prompt={attempt.submittedPrompt}
+                    revised={exercise !== attempt.submittedPrompt}
+                    earned={completed.includes(exerciseId)}
+                  />
+                )}
+                {completed.includes(exerciseId) && (
+                  <p className="practice-earned">
+                    <Check size={14} /> Lesson completed · Revising won't remove your earned
+                    progress.
+                  </p>
+                )}
                 <div className="flex gap-3 flex-wrap">
                   {lesson < active.lessons.length - 1 && (
                     <Button
                       variant="outline"
                       onClick={() => {
                         setLesson(lesson + 1);
-                        setFeedback("");
-                        setExercise("");
                       }}
                     >
                       Next lesson <ArrowRight />
@@ -218,13 +229,16 @@ export function Academy() {
                   <Button asChild variant="ghost">
                     <Link
                       to="/mentor"
-                      search={{ prompt: "Help me practice writing effective prompts" }}
+                      onClick={() => setLessonHandoff({ topic, prompt: exercise })}
                     >
-                      Ask your Mentor
+                      Ask AI Mentor
                     </Link>
                   </Button>
                   <Button asChild variant="ghost">
-                    <Link to="/studio">
+                    <Link
+                      to="/studio"
+                      onClick={() => setLessonHandoff({ topic, prompt: exercise })}
+                    >
                       Build an agent <ArrowRight />
                     </Link>
                   </Button>

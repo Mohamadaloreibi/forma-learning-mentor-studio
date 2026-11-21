@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUp, ArrowUpRight, ShieldCheck, Blocks } from "lucide-react";
+import { ArrowUp, ArrowUpRight, ShieldCheck, Blocks, BookOpen as BookOpenIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Conversation,
@@ -18,8 +18,13 @@ import { PageHeading, FormaMark } from "./shell";
 import { useWorkplace } from "./context";
 import { mentorReply } from "@/lib/workplace";
 export function Mentor({ prompt }: { prompt?: string }) {
-  const { profile, messages, setMessages } = useWorkplace();
-  const [text, setText] = useState(prompt ?? "");
+  const { profile, messages, setMessages, lessonHandoff, setLessonHandoff } = useWorkplace();
+  const [text, setText] = useState(
+    prompt ??
+      (lessonHandoff
+        ? `I'm practicing the Academy lesson "${lessonHandoff.topic}". Please help me improve this practice prompt:\n\n${lessonHandoff.prompt || "I haven't written a prompt yet."}`
+        : ""),
+  );
   function send(input: string) {
     if (!input.trim()) return;
     setMessages((prev) => [
@@ -28,6 +33,7 @@ export function Mentor({ prompt }: { prompt?: string }) {
       { role: "assistant", text: mentorReply(input) },
     ]);
     setText("");
+    setLessonHandoff(null);
   }
   return (
     <div className="content-enter">
@@ -62,6 +68,12 @@ export function Mentor({ prompt }: { prompt?: string }) {
               <p>Fictional conversation · A safe space to explore</p>
             </div>
           </div>
+          {lessonHandoff && !prompt && (
+            <div className="lesson-context-note">
+              <BookOpenIcon />
+              From AI Academy · {lessonHandoff.topic}
+            </div>
+          )}
           <Conversation>
             <ConversationContent>
               {messages.map((m, i) => (

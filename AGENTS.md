@@ -35,3 +35,4 @@ use the editor.
 - Give every module its own TanStack content route; share the workplace shell and semantic visual system across them.
 - Keep mentor and agent test responses explicitly fictional and deterministic; do not perform model calls, real integrations, or external actions in the prototype.
 - Compose the mentor transcript and composer with installed AI Elements primitives for accessible, maintainable conversation controls.
+- Keep practice evaluation in a pure browser-safe module and store attempts/handoffs in shared session state; this isolates demo rules from future model and persistence integrations without placing practice text in URLs.

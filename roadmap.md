@@ -10,3 +10,9 @@
 - [x] Bring AI Mentor into the main workspace and connect learning, practice, and agent creation.
 - [x] Add Your workspace actions and compact fictional Today's focus activities.
 - [x] Verify dashboard links, existing modules, and desktop/mobile hierarchy.
+
+## Academy practice
+- [x] Add deterministic five-criterion feedback and revision support.
+- [x] Preserve practice attempts and consistent session progress.
+- [x] Carry lesson/prompt context to Mentor and Agent Studio.
+- [x] Test criteria, progress, and the complete practice journey.

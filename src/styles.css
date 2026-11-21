@@ -1202,6 +1202,130 @@ h3 {
   border-radius: 6px;
   margin: 20px 0;
 }
+.academy-progress {
+  display: block;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border: 0;
+  background: var(--muted);
+  color: var(--primary);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 14px 0;
+}
+.academy-progress::-webkit-progress-bar {
+  background: var(--muted);
+}
+.academy-progress::-webkit-progress-value {
+  background: var(--primary);
+  border-radius: 4px;
+}
+.academy-progress::-moz-progress-bar {
+  background: var(--primary);
+}
+.progress-track > .academy-progress {
+  width: 100%;
+  margin: 0;
+}
+.practice-feedback {
+  border-top: 2px solid var(--primary);
+  padding: 20px 0;
+  margin: 20px 0;
+}
+.practice-feedback header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.practice-feedback header > svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.practice-feedback header > div {
+  flex: 1;
+}
+.lesson-content .practice-feedback header p {
+  font-size: 10px;
+  margin: 6px 0 0;
+}
+.practice-criteria {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+.practice-criteria li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+.practice-criteria small {
+  margin-left: auto;
+  color: var(--muted-foreground);
+  font-size: 9px;
+  white-space: nowrap;
+}
+.criterion-met > svg {
+  color: var(--mint-ink);
+}
+.criterion-improve > svg {
+  color: var(--peach-ink);
+}
+.feedback-detail h4 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 18px 0 7px;
+}
+.lesson-content .feedback-detail p,
+.feedback-detail li {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+.feedback-detail ul {
+  padding-left: 18px;
+  color: var(--muted-foreground);
+}
+.feedback-detail blockquote {
+  padding: 15px 17px;
+  border-left: 2px solid var(--primary);
+  background: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+}
+.lesson-content .feedback-completion {
+  font-size: 11px;
+  margin: 16px 0 0;
+  color: var(--primary);
+}
+.lesson-content .practice-earned {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--mint-ink);
+  font-size: 11px;
+}
+.lesson-context-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--primary);
+  background: var(--accent);
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.lesson-context-note svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
 .field-label {
   display: block;
   font-size: 12px;

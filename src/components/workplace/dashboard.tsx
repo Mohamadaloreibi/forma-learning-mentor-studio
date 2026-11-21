@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { useWorkplace } from "./context";
 import { FormaMark, PageHeading } from "./shell";
 import art from "@/assets/forma-learning.asset.json";
+import { totalAcademyLessons } from "@/lib/practice";
 export function Dashboard() {
   const { profile, agents, completed } = useWorkplace();
   return (
@@ -116,7 +117,7 @@ export function Dashboard() {
                 Your learning progress <BookOpen />
               </div>
               <div className="stat-value">
-                {Math.round((completed.length / 12) * 100)}
+                {Math.round((completed.length / totalAcademyLessons) * 100)}
                 <small>% complete</small>
               </div>
               <div className="stat-foot positive">
@@ -171,9 +172,19 @@ export function Dashboard() {
               <p>Get better results by asking better questions.</p>
               <div className="course-progress">
                 <span className="progress-track">
-                  <span />
+                  <progress
+                    className="academy-progress"
+                    aria-label="AI foundations progress"
+                    max={6}
+                    value={completed.filter((id) => id.startsWith("prompt-")).length}
+                  />
                 </span>
-                <span>50%</span>
+                <span>
+                  {Math.round(
+                    (completed.filter((id) => id.startsWith("prompt-")).length / 6) * 100,
+                  )}
+                  %
+                </span>
               </div>
             </div>
             <Button asChild variant="outline" className="small-button resume">
