@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useLocation,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
@@ -13,6 +14,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { WorkplaceProvider } from "@/components/workplace/provider";
 import { WorkplaceShell } from "@/components/workplace/shell";
+import { PublicShell } from "@/components/public/site";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -107,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&display=swap",
       },
     ],
   }),
@@ -133,15 +135,25 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { pathname } = useLocation();
+  const isPublic = ["/home", "/product", "/solutions", "/about", "/contact"].includes(
+    pathname.replace(/\/$/, ""),
+  );
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <TooltipProvider><WorkplaceProvider><WorkplaceShell><Outlet /></WorkplaceShell></WorkplaceProvider></TooltipProvider> breaks all child routes. */}
+      {/* The shared session stays mounted while either shell renders its route outlet. */}
       <TooltipProvider>
         <WorkplaceProvider>
-          <WorkplaceShell>
-            <Outlet />
-          </WorkplaceShell>
+          {isPublic ? (
+            <PublicShell>
+              <Outlet />
+            </PublicShell>
+          ) : (
+            <WorkplaceShell>
+              <Outlet />
+            </WorkplaceShell>
+          )}
         </WorkplaceProvider>
       </TooltipProvider>
     </QueryClientProvider>

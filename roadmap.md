@@ -16,3 +16,11 @@
 - [x] Preserve practice attempts and consistent session progress.
 - [x] Carry lesson/prompt context to Mentor and Agent Studio.
 - [x] Test criteria, progress, and the complete practice journey.
+
+## Public website
+- [x] Add Home, Product, Solutions, About, and Contact without changing demo routes.
+- [x] Build an original editorial visual system and scroll-led employee product journey.
+- [x] Clearly separate available demo experiences from planned automation and oversight.
+- [x] Connect exploration to the demo and prepare copy-only contact/early-access enquiries.
+- [x] Verify public navigation, demo preservation, and desktop/mobile layouts.
+- [ ] Enable enquiry delivery after the user supplies a destination email address.

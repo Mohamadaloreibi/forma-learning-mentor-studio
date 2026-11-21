@@ -10,15 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as AgentsRouteImport } from './routes/agents'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as HomeRouteImport } from './routes/home'
 import { Route as MentorRouteImport } from './routes/mentor'
+import { Route as ProductRouteImport } from './routes/product'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as StudioRouteImport } from './routes/studio'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademyRoute = AcademyRouteImport.update({
@@ -31,14 +41,34 @@ const AgentsRoute = AgentsRouteImport.update({
   path: '/agents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MentorRoute = MentorRouteImport.update({
   id: '/mentor',
   path: '/mentor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductRoute = ProductRouteImport.update({
+  id: '/product',
+  path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudioRoute = StudioRouteImport.update({
@@ -49,50 +79,97 @@ const StudioRoute = StudioRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/academy': typeof AcademyRoute
   '/agents': typeof AgentsRoute
+  '/contact': typeof ContactRoute
+  '/home': typeof HomeRoute
   '/mentor': typeof MentorRoute
+  '/product': typeof ProductRoute
   '/settings': typeof SettingsRoute
+  '/solutions': typeof SolutionsRoute
   '/studio': typeof StudioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/academy': typeof AcademyRoute
   '/agents': typeof AgentsRoute
+  '/contact': typeof ContactRoute
+  '/home': typeof HomeRoute
   '/mentor': typeof MentorRoute
+  '/product': typeof ProductRoute
   '/settings': typeof SettingsRoute
+  '/solutions': typeof SolutionsRoute
   '/studio': typeof StudioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/academy': typeof AcademyRoute
   '/agents': typeof AgentsRoute
+  '/contact': typeof ContactRoute
+  '/home': typeof HomeRoute
   '/mentor': typeof MentorRoute
+  '/product': typeof ProductRoute
   '/settings': typeof SettingsRoute
+  '/solutions': typeof SolutionsRoute
   '/studio': typeof StudioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/academy' | '/agents' | '/mentor' | '/settings' | '/studio'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/academy'
+    | '/agents'
+    | '/contact'
+    | '/home'
+    | '/mentor'
+    | '/product'
+    | '/settings'
+    | '/solutions'
+    | '/studio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/academy' | '/agents' | '/mentor' | '/settings' | '/studio'
+  to:
+    | '/'
+    | '/about'
+    | '/academy'
+    | '/agents'
+    | '/contact'
+    | '/home'
+    | '/mentor'
+    | '/product'
+    | '/settings'
+    | '/solutions'
+    | '/studio'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/academy'
     | '/agents'
+    | '/contact'
+    | '/home'
     | '/mentor'
+    | '/product'
     | '/settings'
+    | '/solutions'
     | '/studio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AcademyRoute: typeof AcademyRoute
   AgentsRoute: typeof AgentsRoute
+  ContactRoute: typeof ContactRoute
+  HomeRoute: typeof HomeRoute
   MentorRoute: typeof MentorRoute
+  ProductRoute: typeof ProductRoute
   SettingsRoute: typeof SettingsRoute
+  SolutionsRoute: typeof SolutionsRoute
   StudioRoute: typeof StudioRoute
 }
 
@@ -103,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academy': {
@@ -119,6 +203,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mentor': {
       id: '/mentor'
       path: '/mentor'
@@ -126,11 +224,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MentorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/studio': {
@@ -145,10 +257,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AcademyRoute: AcademyRoute,
   AgentsRoute: AgentsRoute,
+  ContactRoute: ContactRoute,
+  HomeRoute: HomeRoute,
   MentorRoute: MentorRoute,
+  ProductRoute: ProductRoute,
   SettingsRoute: SettingsRoute,
+  SolutionsRoute: SolutionsRoute,
   StudioRoute: StudioRoute,
 }
 export const routeTree = rootRouteImport
