@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { PageHeading } from "./shell";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 export function SettingsPage() {
   const { profile, setProfile, preferences, setPreferences } = useWorkplace();
   const [form, setForm] = useState(profile);

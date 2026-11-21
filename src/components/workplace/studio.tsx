@@ -12,7 +12,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { PageHeading } from "./shell";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 import { requestReview, type Agent } from "@/lib/workplace";
 const sample =
   "Monday design meeting\nJamie: Share homepage mockups by Wednesday.\nTaylor: Review the mockups on Thursday.\nDecision: Keep the launch scope focused on the core experience.";

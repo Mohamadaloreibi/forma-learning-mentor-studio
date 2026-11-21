@@ -31,6 +31,7 @@ use the editor.
 
 ## Application architecture
 - Keep demo workplace state in a shared React provider above the route outlet so learning, mentor, and agent views share one session without production infrastructure.
+- Define workplace context and its consumer hook in a non-component module; keep the provider component's module component-only so hot refresh cannot split context identity.
 - Give every module its own TanStack content route; share the workplace shell and semantic visual system across them.
 - Keep mentor and agent test responses explicitly fictional and deterministic; do not perform model calls, real integrations, or external actions in the prototype.
 - Compose the mentor transcript and composer with installed AI Elements primitives for accessible, maintainable conversation controls.

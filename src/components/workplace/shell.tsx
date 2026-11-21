@@ -26,7 +26,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 const navigation = [
   { to: "/" as const, label: "Overview", icon: LayoutDashboard },
   { to: "/academy" as const, label: "AI Academy", icon: BookOpen },

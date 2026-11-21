@@ -16,7 +16,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 import { FormaMark, PageHeading } from "./shell";
 import art from "@/assets/forma-learning.asset.json";
 export function Dashboard() {

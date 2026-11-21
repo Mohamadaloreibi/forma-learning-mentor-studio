@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { PageHeading } from "./shell";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 import art from "@/assets/forma-learning.asset.json";
 const paths = [
   {

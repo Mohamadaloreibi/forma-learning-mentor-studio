@@ -15,7 +15,7 @@ import {
   PromptInputSubmit,
 } from "@/components/ai-elements/prompt-input";
 import { PageHeading, FormaMark } from "./shell";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 import { mentorReply } from "@/lib/workplace";
 export function Mentor({ prompt }: { prompt?: string }) {
   const { profile, messages, setMessages } = useWorkplace();

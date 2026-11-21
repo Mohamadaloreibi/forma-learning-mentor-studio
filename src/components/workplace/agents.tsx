@@ -4,7 +4,7 @@ import { Bot, Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PageHeading } from "./shell";
-import { useWorkplace } from "./provider";
+import { useWorkplace } from "./context";
 export function Agents() {
   const { agents } = useWorkplace();
   const [filter, setFilter] = useState("All agents");
