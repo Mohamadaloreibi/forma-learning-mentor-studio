@@ -430,6 +430,222 @@ h3 {
   grid-template-columns: minmax(0, 1fr) 285px;
   gap: 23px;
 }
+.workspace-actions-section .section-heading {
+  margin-top: 24px;
+}
+.workspace-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.workspace-action {
+  position: relative;
+  height: auto;
+  min-height: 123px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 11px;
+  white-space: normal;
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+}
+.workspace-action strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.workspace-action small {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+  margin-top: 4px;
+  line-height: 1.6;
+}
+.workspace-action .workspace-action-arrow {
+  position: absolute;
+  top: 18px;
+  right: 13px;
+  width: 13px;
+  height: 13px;
+  color: var(--muted-foreground);
+}
+.workplace-mentor-banner .mini-label {
+  gap: 8px;
+}
+.today-focus {
+  padding: 22px 0 20px;
+  border-top: 2px solid var(--primary);
+  border-bottom: 1px solid var(--border);
+}
+.focus-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.focus-heading .mini-label {
+  margin-bottom: 8px;
+  font-size: 8px;
+}
+.focus-heading > svg {
+  color: var(--primary);
+}
+.focus-intro {
+  color: var(--muted-foreground);
+  font-size: 10px;
+  margin-top: 8px;
+  line-height: 1.7;
+}
+.focus-list {
+  list-style: none;
+  padding: 0;
+  margin: 21px 0 0;
+}
+.focus-list li {
+  display: flex;
+  gap: 11px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+.focus-list li:first-child {
+  padding-top: 0;
+}
+.focus-list li:last-child {
+  border: 0;
+  padding-bottom: 0;
+}
+.focus-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  color: var(--primary);
+  background: var(--accent);
+}
+.focus-category {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: 8px;
+  margin: 2px 0 7px;
+}
+.focus-list h3 {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.focus-list p {
+  font-size: 10px;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin-top: 5px;
+}
+.focus-list a {
+  height: 26px;
+  padding: 0;
+  font-size: 9px;
+  gap: 6px;
+  margin-top: 5px;
+}
+.focus-list a svg {
+  width: 12px;
+  height: 12px;
+}
+.focus-demo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted-foreground);
+  font-size: 8px;
+  margin-top: 20px;
+}
+.dashboard-mentor-context {
+  margin-top: 24px;
+}
+.guided-workplace-journey {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  margin-top: 4px;
+  border-bottom: 1px solid var(--border);
+  gap: 3px;
+}
+.guided-workplace-journey > svg {
+  width: 12px;
+  height: 12px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+.guided-workplace-journey a {
+  padding: 0 5px;
+  font-size: 9px;
+  gap: 6px;
+  height: 31px;
+}
+.guided-workplace-journey a span {
+  color: var(--primary);
+  font-size: 8px;
+}
+.guided-workplace-journey a svg {
+  width: 12px;
+  height: 12px;
+}
+@media (max-width: 1150px) {
+  .guided-workplace-journey a svg {
+    display: none;
+  }
+  .guided-workplace-journey a {
+    white-space: normal;
+    text-align: left;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 960px) {
+  .dashboard-mentor-context {
+    margin-top: 0;
+  }
+}
+@media (max-width: 720px) {
+  .workspace-actions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .workspace-action {
+    min-height: 74px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+  }
+  .workspace-action strong {
+    font-size: 12px;
+  }
+  .workspace-action .workspace-action-arrow {
+    top: 30px;
+  }
+  .workspace-action small {
+    padding-right: 15px;
+  }
+  .focus-list h3 {
+    font-size: 12px;
+  }
+  .focus-list p {
+    font-size: 11px;
+  }
+  .guided-workplace-journey a {
+    font-size: 9px;
+    padding: 0 2px;
+  }
+  .guided-workplace-journey a span {
+    display: none;
+  }
+}
 .learning-banner {
   height: 225px;
   border-radius: 7px;

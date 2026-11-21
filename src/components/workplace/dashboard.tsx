@@ -26,7 +26,7 @@ export function Dashboard() {
       <PageHeading
         eyebrow="YOUR WORKPLACE, REIMAGINED"
         title={`Good morning, ${profile.name.split(" ")[0]}.`}
-        description="Small steps today. New possibilities tomorrow."
+        description="A little guidance. A clearer plan. More room for meaningful work."
         action={
           <span className="date-label">
             <CalendarDays size={13} /> Monday, November 23
@@ -35,30 +35,79 @@ export function Dashboard() {
       />
       <div className="dashboard-columns">
         <div>
-          <section className="learning-banner">
+          <section
+            className="learning-banner workplace-mentor-banner"
+            aria-labelledby="workplace-mentor-title"
+          >
             <img src={art.url} alt="Frosted blue ribbon sculpture with mint and peach forms" />
             <div className="banner-content">
               <span className="mini-label">
-                <span>✳</span> LEARN. BUILD. GROW.
+                <FormaMark small /> YOUR AI MENTOR
               </span>
-              <h2>
-                Your next chapter
+              <h2 id="workplace-mentor-title">
+                A guide for your
                 <br />
-                starts with AI.
+                working day.
               </h2>
               <p>
-                Build the confidence to work smarter.
+                Settle into your role, practice a new skill,
                 <br />
-                One practical skill at a time.
+                or work through the task in front of you.
               </p>
               <div>
                 <Button asChild className="small-button">
-                  <Link to="/academy">
-                    Continue learning <ArrowRight />
+                  <Link to="/mentor">
+                    Ask your AI Mentor <ArrowRight />
                   </Link>
                 </Button>
-                <span className="banner-time">Just 10 minutes a day</span>
+                <span className="banner-time">By your side, one step at a time</span>
               </div>
+            </div>
+          </section>
+          <section className="workspace-actions-section" aria-labelledby="workspace-actions-title">
+            <div className="section-heading">
+              <div>
+                <h2 id="workspace-actions-title">Your workspace</h2>
+                <p>Learn a skill. Practice with guidance. Put it to work.</p>
+              </div>
+            </div>
+            <div className="workspace-actions">
+              <Button asChild variant="outline" className="workspace-action">
+                <Link to="/academy">
+                  <span className="action-icon">
+                    <BookOpen />
+                  </span>
+                  <span>
+                    <strong>Learn something new</strong>
+                    <small>AI Academy · Practical skills</small>
+                  </span>
+                  <ArrowUpRight className="workspace-action-arrow" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="workspace-action">
+                <Link to="/mentor">
+                  <span className="action-icon peach">
+                    <MessagesSquare />
+                  </span>
+                  <span>
+                    <strong>Ask your AI Mentor</strong>
+                    <small>Personal guidance · Daily tasks</small>
+                  </span>
+                  <ArrowUpRight className="workspace-action-arrow" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="workspace-action">
+                <Link to="/studio">
+                  <span className="action-icon mint">
+                    <Blocks />
+                  </span>
+                  <span>
+                    <strong>Build an AI agent</strong>
+                    <small>Agent Studio · Your ideas in action</small>
+                  </span>
+                  <ArrowUpRight className="workspace-action-arrow" />
+                </Link>
+              </Button>
             </div>
           </section>
           <div className="stats-grid">
@@ -102,8 +151,8 @@ export function Dashboard() {
           </div>
           <div className="section-heading">
             <div>
-              <h2>Pick up where you left off</h2>
-              <p>A little learning goes a long way.</p>
+              <h2>Put your next skill to work</h2>
+              <p>Better prompts today. A useful meeting assistant tomorrow.</p>
             </div>
             <Link to="/academy" className="text-link">
               View academy <ArrowUpRight />
@@ -130,6 +179,33 @@ export function Dashboard() {
             <Button asChild variant="outline" className="small-button resume">
               <Link to="/academy">
                 Resume lesson <ArrowRight />
+              </Link>
+            </Button>
+          </div>
+          <div className="guided-workplace-journey" aria-label="Learn, practice, build">
+            <Button asChild variant="ghost">
+              <Link to="/academy">
+                <span>01</span>Learn the skill
+                <BookOpen />
+              </Link>
+            </Button>
+            <ArrowRight aria-hidden="true" />
+            <Button asChild variant="ghost">
+              <Link
+                to="/mentor"
+                search={{
+                  prompt: "Help me practice writing an effective prompt for a meeting notes agent",
+                }}
+              >
+                <span>02</span>Practice with Mentor
+                <MessagesSquare />
+              </Link>
+            </Button>
+            <ArrowRight aria-hidden="true" />
+            <Button asChild variant="ghost">
+              <Link to="/studio">
+                <span>03</span>Build your agent
+                <Blocks />
               </Link>
             </Button>
           </div>
@@ -188,14 +264,81 @@ export function Dashboard() {
           </table>
         </div>
         <aside className="dashboard-aside">
-          <section className="mentor-card">
+          <section className="today-focus" aria-labelledby="today-focus-title">
+            <div className="focus-heading">
+              <div>
+                <span className="mini-label">YOUR NEXT STEPS</span>
+                <h2 id="today-focus-title">Today's focus</h2>
+              </div>
+              <Target size={19} />
+            </div>
+            <p className="focus-intro">A thoughtful start in your Northstar role.</p>
+            <ol className="focus-list">
+              <li>
+                <span className="focus-number">01</span>
+                <div>
+                  <span className="focus-category">ONBOARDING · 5 MIN</span>
+                  <h3>Find your first-week priorities</h3>
+                  <p>Walk through a fictional onboarding plan with your Mentor.</p>
+                  <Button asChild variant="link">
+                    <Link
+                      to="/mentor"
+                      search={{
+                        prompt: "Walk me through onboarding and help me plan my first week",
+                      }}
+                    >
+                      Plan with Mentor
+                      <ArrowRight />
+                    </Link>
+                  </Button>
+                </div>
+              </li>
+              <li>
+                <span className="focus-number">02</span>
+                <div>
+                  <span className="focus-category">PRACTICE · 5 MIN</span>
+                  <h3>Write a clearer team update</h3>
+                  <p>Practice adding context, a task, and an output to your prompt.</p>
+                  <Button asChild variant="link">
+                    <Link
+                      to="/mentor"
+                      search={{
+                        prompt: "Help me write a better prompt for a fictional team update email",
+                      }}
+                    >
+                      Practice a daily task
+                      <ArrowRight />
+                    </Link>
+                  </Button>
+                </div>
+              </li>
+              <li>
+                <span className="focus-number">03</span>
+                <div>
+                  <span className="focus-category">BUILD · 10 MIN</span>
+                  <h3>Try a meeting notes assistant</h3>
+                  <p>Turn your prompt into an agent and test it with fictional notes.</p>
+                  <Button asChild variant="link">
+                    <Link to="/studio">
+                      Start in Agent Studio
+                      <ArrowRight />
+                    </Link>
+                  </Button>
+                </div>
+              </li>
+            </ol>
+            <div className="focus-demo">
+              <ShieldCheck size={12} /> Fictional activities · Your pace, your choice
+            </div>
+          </section>
+          <section className="mentor-card dashboard-mentor-context">
             <div className="mentor-card-header">
               <span className="mentor-mark">
                 <FormaMark />
               </span>
               <div>
                 <h2>Your AI Mentor</h2>
-                <p>A little guidance. A lot of possibility.</p>
+                <p>Learning, onboarding, and everyday work.</p>
               </div>
             </div>
             <h3>
@@ -228,57 +371,6 @@ export function Dashboard() {
               <ShieldCheck size={11} /> Your safe space to ask and explore
             </div>
           </section>
-          <div>
-            <h2 className="right-heading">A good next step</h2>
-            <div className="next-steps">
-              <div className="next-step">
-                <span className="action-icon">
-                  <BookOpen />
-                </span>
-                <div>
-                  <strong>Learn something useful</strong>
-                  <p>Explore AI skills that fit your role.</p>
-                </div>
-                <Link to="/academy" aria-label="Explore AI skills">
-                  <ArrowUpRight />
-                </Link>
-              </div>
-              <div className="next-step">
-                <span className="action-icon mint">
-                  <Blocks />
-                </span>
-                <div>
-                  <strong>Build your first agent</strong>
-                  <p>Turn a repetitive task into a possibility.</p>
-                </div>
-                <Link to="/studio" aria-label="Build your first agent">
-                  <ArrowUpRight />
-                </Link>
-              </div>
-              <div className="next-step">
-                <span className="action-icon peach">
-                  <MessagesSquare />
-                </span>
-                <div>
-                  <strong>Think it through together</strong>
-                  <p>Your AI Mentor is here to help.</p>
-                </div>
-                <Link to="/mentor" aria-label="Ask AI Mentor">
-                  <ArrowUpRight />
-                </Link>
-              </div>
-            </div>
-            <div className="weekly-note">
-              <div>
-                <Leaf size={14} /> Progress, not perfection.
-              </div>
-              <p>
-                You’ve learned 2 new skills this week.
-                <br />
-                That’s 2 more ways to make work better.
-              </p>
-            </div>
-          </div>
         </aside>
       </div>
     </div>
