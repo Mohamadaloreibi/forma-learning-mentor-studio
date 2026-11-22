@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/brand";
+import { ThemeControl } from "@/components/theme-control";
 
 const links = [
   { to: "/home", label: "Home" },
@@ -35,7 +36,13 @@ export function PublicShell({ children }: { children: ReactNode }) {
               </Link>
             </Button>
           ))}
+          <div className="public-mobile-theme">
+            <ThemeControl inline />
+          </div>
         </nav>
+        <div className="public-desktop-theme">
+          <ThemeControl />
+        </div>
         <Button asChild variant="outline" className="public-header-cta">
           <Link to="/">
             Explore Lerafy <ArrowUpRight />

@@ -39,3 +39,4 @@ use the editor.
 - Keep public content on /home, /product, /solutions, /about, and /contact with a pathname-selected root shell; preserve the existing demo URLs and keep the shared workplace provider mounted across both shells.
 - Keep public product scenes browser-only and fictional, with contact enquiries copied rather than submitted until a delivery destination is configured; this avoids implying live integrations or collecting unconnected personal data.
 - Use shared BrandLogo and BrandSymbol components backed by uploaded asset pointers, with light/dark lettering variants and a local small favicon; this keeps branding consistent without duplicating or redrawing artwork.
+- Mount next-themes in the root shell with class-based Light/Dark/System selection and pre-hydration initialization; share one theme preference across public and workplace pages, and switch logo assets through CSS to avoid hydration flashes.

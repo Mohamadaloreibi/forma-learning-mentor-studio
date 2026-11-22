@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { BrandLogo, BrandSymbol } from "@/components/brand";
+import { ThemeControl } from "@/components/theme-control";
 import { useWorkplace } from "./context";
 const navigation = [
   { to: "/" as const, label: "Overview", icon: LayoutDashboard },
@@ -101,6 +102,9 @@ export function WorkplaceShell({ children }: { children: ReactNode }) {
           ))}
         </div>
         <div className="sidebar-bottom">
+          <div className="workspace-mobile-theme">
+            <ThemeControl inline />
+          </div>
           <div className="journey-note">
             <span className="note-symbol">✳</span>
             <strong>
@@ -172,6 +176,7 @@ export function WorkplaceShell({ children }: { children: ReactNode }) {
             <strong>{title}</strong>
           </div>
           <div className="topbar-actions">
+            <ThemeControl />
             <span className="demo-tag">
               <span />
               Demo workspace

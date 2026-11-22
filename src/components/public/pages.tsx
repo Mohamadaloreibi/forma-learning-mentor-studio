@@ -14,7 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import workspace from "@/assets/lerafy-workspace-preview.asset.json";
+import workspace from "@/assets/lerafy-workspace-light.asset.json";
+import darkWorkspace from "@/assets/lerafy-workspace-dark.asset.json";
 import { PublicActions, PublicClosing } from "./site";
 import { ProductStory } from "./story";
 
@@ -193,10 +194,19 @@ export function HomePage() {
           </div>
           <Link to="/" aria-label="Explore the Lerafy demo workspace">
             <img
+              className="logo-on-light"
               src={workspace.url}
               width="1440"
               height="1020"
               alt="Lerafy workspace showing AI Mentor, Academy practice, and personal agents"
+              fetchPriority="high"
+            />
+            <img
+              className="logo-on-dark"
+              src={darkWorkspace.url}
+              width="1440"
+              height="1020"
+              alt="Lerafy dark workspace showing AI Mentor, Academy practice, and personal agents"
               fetchPriority="high"
             />
           </Link>

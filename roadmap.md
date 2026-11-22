@@ -29,3 +29,9 @@
 - [x] Prepare clean uploaded-logo variants, favicon, and app icon without generating a replacement.
 - [x] Update website/app branding and semantic colors while preserving layouts and logic.
 - [x] Refresh the authentic product screenshot and verify desktop/mobile workflows.
+
+## Unified themes
+- [x] Refine modern public typography, preview framing, and shared surface tokens.
+- [x] Add accessible Light/Dark/System controls to public and app headers and mobile menus.
+- [x] Persist theme choice, respond to system changes, and prevent initial theme flashes.
+- [x] Verify both themes, forms/modals, logo contrast, mobile layouts, and existing workflows.
