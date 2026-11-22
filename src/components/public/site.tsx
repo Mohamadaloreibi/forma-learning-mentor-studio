@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FormaMark } from "@/components/workplace/shell";
+import { BrandLogo } from "@/components/brand";
 
 const links = [
   { to: "/home", label: "Home" },
@@ -19,8 +19,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
       <header className="public-header">
         <Button asChild variant="ghost" className="public-brand">
           <Link to="/home">
-            <FormaMark />
-            forma.
+            <BrandLogo />
           </Link>
         </Button>
         <nav aria-label="Public navigation" className={open ? "public-nav is-open" : "public-nav"}>
@@ -39,7 +38,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
         </nav>
         <Button asChild variant="outline" className="public-header-cta">
           <Link to="/">
-            Explore Forma <ArrowUpRight />
+            Explore Lerafy <ArrowUpRight />
           </Link>
         </Button>
         <Button
@@ -56,8 +55,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
       <footer className="public-footer">
         <div className="public-footer-top">
           <Link to="/home" className="public-wordmark">
-            <FormaMark />
-            forma.
+            <BrandLogo />
           </Link>
           <p>
             More human possibility.
@@ -71,7 +69,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
           </Button>
         </div>
         <div className="public-footer-bottom">
-          <span>© {new Date().getFullYear()} Forma</span>
+          <span>© {new Date().getFullYear()} Lerafy</span>
           <nav aria-label="Footer navigation">
             {links.map((item) => (
               <Link key={item.to} to={item.to}>
@@ -94,7 +92,7 @@ export function PublicActions() {
     <div className="public-actions">
       <Button asChild className="public-primary" size="lg">
         <Link to="/">
-          Explore Forma <ArrowUpRight />
+          Explore Lerafy <ArrowUpRight />
         </Link>
       </Button>
       <Button asChild variant="ghost" size="lg" className="public-secondary">

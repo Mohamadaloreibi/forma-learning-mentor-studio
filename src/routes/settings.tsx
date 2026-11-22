@@ -3,15 +3,15 @@ import { SettingsPage } from "@/components/workplace/settings";
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — Forma" },
+      { title: "Settings — Lerafy" },
       {
         name: "description",
-        content: "Manage your Forma demo profile, learning preferences, and workspace settings.",
+        content: "Manage your Lerafy demo profile, learning preferences, and workspace settings.",
       },
-      { property: "og:title", content: "Settings — Forma" },
+      { property: "og:title", content: "Settings — Lerafy" },
       {
         property: "og:description",
-        content: "Manage your Forma demo profile, learning preferences, and workspace settings.",
+        content: "Manage your Lerafy demo profile, learning preferences, and workspace settings.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

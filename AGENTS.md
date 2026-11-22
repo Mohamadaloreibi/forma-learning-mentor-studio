@@ -38,3 +38,4 @@ use the editor.
 - Keep practice evaluation in a pure browser-safe module and store attempts/handoffs in shared session state; this isolates demo rules from future model and persistence integrations without placing practice text in URLs.
 - Keep public content on /home, /product, /solutions, /about, and /contact with a pathname-selected root shell; preserve the existing demo URLs and keep the shared workplace provider mounted across both shells.
 - Keep public product scenes browser-only and fictional, with contact enquiries copied rather than submitted until a delivery destination is configured; this avoids implying live integrations or collecting unconnected personal data.
+- Use shared BrandLogo and BrandSymbol components backed by uploaded asset pointers, with light/dark lettering variants and a local small favicon; this keeps branding consistent without duplicating or redrawing artwork.

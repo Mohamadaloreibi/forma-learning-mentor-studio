@@ -24,3 +24,8 @@
 - [x] Connect exploration to the demo and prepare copy-only contact/early-access enquiries.
 - [x] Verify public navigation, demo preservation, and desktop/mobile layouts.
 - [ ] Enable enquiry delivery after the user supplies a destination email address.
+
+## Lerafy branding
+- [x] Prepare clean uploaded-logo variants, favicon, and app icon without generating a replacement.
+- [x] Update website/app branding and semantic colors while preserving layouts and logic.
+- [x] Refresh the authentic product screenshot and verify desktop/mobile workflows.

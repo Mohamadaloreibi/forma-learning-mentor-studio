@@ -5,13 +5,13 @@ export const Route = createFileRoute("/studio")({
   validateSearch: z.object({ agent: z.string().optional() }),
   head: () => ({
     meta: [
-      { title: "Agent Studio — Forma" },
+      { title: "Agent Studio — Lerafy" },
       {
         name: "description",
         content:
           "Describe, configure, safely test, and request review for fictional no-code AI agents.",
       },
-      { property: "og:title", content: "Agent Studio — Forma" },
+      { property: "og:title", content: "Agent Studio — Lerafy" },
       {
         property: "og:description",
         content:

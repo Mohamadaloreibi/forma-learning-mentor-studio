@@ -26,6 +26,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { BrandLogo, BrandSymbol } from "@/components/brand";
 import { useWorkplace } from "./context";
 const navigation = [
   { to: "/" as const, label: "Overview", icon: LayoutDashboard },
@@ -41,15 +42,6 @@ const future = [
   ["AI Skills Passport", Award],
   ["Impact Dashboard", ChartNoAxesCombined],
 ] as const;
-export function FormaMark({ small = false }: { small?: boolean }) {
-  return (
-    <span className={small ? "forma-mark small" : "forma-mark"} aria-hidden="true">
-      <i />
-      <i />
-      <i />
-    </span>
-  );
-}
 export function WorkplaceShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const { profile, preferences } = useWorkplace();
@@ -65,10 +57,7 @@ export function WorkplaceShell({ children }: { children: ReactNode }) {
     <div className="workplace">
       <aside className={`sidebar ${mobile ? "mobile-open" : ""}`}>
         <Link to="/" className="brand" onClick={() => setMobile(false)}>
-          <FormaMark />
-          <span>
-            forma<span className="brand-dot">.</span>
-          </span>
+          <BrandLogo dark />
         </Link>
         <div className="workspace-switch">
           <span className="workspace-avatar">N</span>
@@ -220,7 +209,7 @@ export function WorkplaceShell({ children }: { children: ReactNode }) {
         <main className="page-content">{children}</main>
         <footer className="workspace-footer">
           <span>
-            <FormaMark small /> A little more capable, every day.
+            <BrandSymbol small /> A little more capable, every day.
           </span>
           <span>
             Learn <i /> Build <i /> Grow
@@ -278,7 +267,7 @@ export function WorkplaceShell({ children }: { children: ReactNode }) {
           <DialogDescription>
             {coming === "Workspace support"
               ? "For this fictional workspace, explore the Academy or ask your AI Mentor."
-              : "Coming soon to Forma. This module is part of the future roadmap and is not available in this prototype."}
+              : "Coming soon to Lerafy. This module is part of the future roadmap and is not available in this prototype."}
           </DialogDescription>
           <Button onClick={() => setComing("")}>Got it</Button>
         </DialogContent>

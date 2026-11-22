@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import workspace from "@/assets/forma-workspace-preview.asset.json";
+import workspace from "@/assets/lerafy-workspace-preview.asset.json";
 import { PublicActions, PublicClosing } from "./site";
 import { ProductStory } from "./story";
 
@@ -134,7 +134,7 @@ export function TrustSection() {
         <p>
           Confidence comes from knowing the boundaries.
           <br />
-          Here is where Forma stands today—and where it is going.
+          Here is where Lerafy stands today—and where it is going.
         </p>
       </div>
       <div className="trust-columns">
@@ -172,15 +172,15 @@ export function HomePage() {
     <>
       <section className="public-hero">
         <div className="public-hero-heading">
-          <span className="public-kicker">FORMA / THE CONNECTED AI WORKPLACE</span>
+          <span className="public-kicker">LERAFY / THE CONNECTED AI WORKPLACE</span>
           <h1>
-            Make room for what
+            Learn. Build.
             <br />
-            people can <em>become.</em>
+            <em>Grow.</em>
           </h1>
           <p>
-            Learn AI, get guidance at work, and build your own AI agents —
-            <br className="desktop-break" /> all in one connected workspace.
+            Empower your team to learn AI, work smarter, and build intelligent agents —
+            <br className="desktop-break" /> all in one workspace.
           </p>
           <PublicActions />
         </div>
@@ -188,15 +188,15 @@ export function HomePage() {
           <div className="public-preview-label">
             <span>LESS FRICTION. MORE FORWARD.</span>
             <span>
-              A look inside Forma <ArrowDown />
+              A look inside Lerafy <ArrowDown />
             </span>
           </div>
-          <Link to="/" aria-label="Explore the Forma demo workspace">
+          <Link to="/" aria-label="Explore the Lerafy demo workspace">
             <img
               src={workspace.url}
               width="1440"
               height="1020"
-              alt="Forma workspace showing AI Mentor, Academy practice, and personal agents"
+              alt="Lerafy workspace showing AI Mentor, Academy practice, and personal agents"
               fetchPriority="high"
             />
           </Link>
@@ -237,8 +237,8 @@ export function ProductPage() {
           <em>Many ways forward.</em>
         </h1>
         <p>
-          From the first question to the first useful assistant, Forma keeps learning, guidance, and
-          creation in the same conversation.
+          From the first question to the first useful assistant, Lerafy keeps learning, guidance,
+          and creation in the same conversation.
         </p>
         <PublicActions />
       </section>
@@ -332,7 +332,7 @@ export function AboutPage() {
   return (
     <>
       <section className="public-page-lead about-lead">
-        <span className="public-kicker">ABOUT FORMA / A PRODUCT PHILOSOPHY</span>
+        <span className="public-kicker">ABOUT LERAFY / A PRODUCT PHILOSOPHY</span>
         <h1>
           Technology should
           <br />
@@ -349,8 +349,8 @@ export function AboutPage() {
             not just the process.
           </h2>
           <p>
-            Forma begins with a simple idea: people do their best work when they have room to learn,
-            someone to turn to, and the confidence to try something new.
+            Lerafy begins with a simple idea: people do their best work when they have room to
+            learn, someone to turn to, and the confidence to try something new.
           </p>
           <p>
             AI can create that room. But another disconnected tool isn’t enough. Learning should
@@ -388,7 +388,7 @@ export function AboutPage() {
           An honest starting point.
         </h2>
         <p>
-          Forma is an interactive product prototype. You can explore the connected workplace with
+          Lerafy is an interactive product prototype. You can explore the connected workplace with
           fictional examples today. Live AI, shared organizational progress, production permissions,
           and workflow automation remain planned—not delivered promises.
         </p>
@@ -412,7 +412,7 @@ export function ContactPage() {
     e.preventDefault();
     try {
       await navigator.clipboard.writeText(
-        `Forma enquiry — ${interest}\nName: ${name}\nEmail: ${email}\n\n${message}`,
+        `Lerafy enquiry — ${interest}\nName: ${name}\nEmail: ${email}\n\n${message}`,
       );
       setStatus(
         "Enquiry copied. Nothing has been sent or stored. Contact delivery is not connected yet.",
@@ -432,7 +432,7 @@ export function ContactPage() {
             come <em>next?</em>
           </h1>
           <p>
-            Interested in early access, or exploring what Forma could mean for your team? Prepare a
+            Interested in early access, or exploring what Lerafy could mean for your team? Prepare a
             note.
           </p>
           <div className="contact-note">

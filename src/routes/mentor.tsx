@@ -5,13 +5,13 @@ export const Route = createFileRoute("/mentor")({
   validateSearch: z.object({ prompt: z.string().optional() }),
   head: () => ({
     meta: [
-      { title: "AI Mentor — Forma" },
+      { title: "AI Mentor — Lerafy" },
       {
         name: "description",
         content:
           "Explore fictional workplace guidance, practice tasks, and learn to create your first agent.",
       },
-      { property: "og:title", content: "AI Mentor — Forma" },
+      { property: "og:title", content: "AI Mentor — Lerafy" },
       {
         property: "og:description",
         content:

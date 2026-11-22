@@ -10,6 +10,7 @@ import {
   Send,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { BrandSymbol } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 const chapters = [
   {
@@ -52,7 +53,9 @@ function StoryPreview({ step }: { step: number }) {
   return (
     <div className="story-product" aria-live="polite">
       <div className="story-product-top">
-        <span className="public-mini-mark">f.</span>
+        <span className="public-mini-mark">
+          <BrandSymbol small />
+        </span>
         <span>Northstar Workspace</span>
         <span className="public-status">Fictional demo</span>
       </div>
@@ -107,7 +110,9 @@ function StoryPreview({ step }: { step: number }) {
               How can I turn this prompt into a meeting assistant?
             </div>
             <div className="story-chat">
-              <span className="public-mini-mark">f.</span>
+              <span className="public-mini-mark">
+                <BrandSymbol small />
+              </span>
               <p>
                 Start with one useful task. Keep the supplied notes as your only source, then test
                 your instructions with a fictional meeting.

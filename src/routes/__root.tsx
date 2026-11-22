@@ -86,13 +86,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Forma — Learn. Build. Grow." },
+      { title: "Lerafy — Learn. Build. Grow." },
       {
         name: "description",
         content: "A unified workplace for practical AI learning, guidance, and agent creation.",
       },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Forma — Learn. Build. Grow." },
+      { property: "og:title", content: "Lerafy — Learn. Build. Grow." },
       {
         property: "og:description",
         content: "A unified workplace for practical AI learning, guidance, and agent creation.",
@@ -106,7 +106,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/app-icon.png" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&display=swap",

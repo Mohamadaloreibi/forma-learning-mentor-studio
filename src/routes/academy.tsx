@@ -3,13 +3,13 @@ import { Academy } from "@/components/workplace/academy";
 export const Route = createFileRoute("/academy")({
   head: () => ({
     meta: [
-      { title: "AI Academy — Forma" },
+      { title: "AI Academy — Lerafy" },
       {
         name: "description",
         content:
           "Build practical workplace AI skills through short lessons and hands-on fictional exercises.",
       },
-      { property: "og:title", content: "AI Academy — Forma" },
+      { property: "og:title", content: "AI Academy — Lerafy" },
       {
         property: "og:description",
         content:

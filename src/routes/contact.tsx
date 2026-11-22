@@ -4,8 +4,8 @@ import { publicHead } from "@/components/public/metadata";
 export const Route = createFileRoute("/contact")({
   head: () =>
     publicHead(
-      "Contact — Start a conversation with Forma",
-      "Prepare an early-access or team enquiry about Forma. Contact delivery is not yet connected in this prototype.",
+      "Contact — Start a conversation with Lerafy",
+      "Prepare an early-access or team enquiry about Lerafy. Contact delivery is not yet connected in this prototype.",
       "/contact",
       false,
     ),

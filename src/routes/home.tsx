@@ -4,8 +4,8 @@ import { publicHead } from "@/components/public/metadata";
 export const Route = createFileRoute("/home")({
   head: () =>
     publicHead(
-      "Forma — Make room for what people can become.",
-      "Learn AI, get guidance at work, and build your own AI agents in one connected Forma workspace.",
+      "Lerafy — Learn. Build. Grow.",
+      "Empower your team to learn AI, work smarter, and build intelligent agents — all in one workspace.",
       "/home",
       true,
     ),

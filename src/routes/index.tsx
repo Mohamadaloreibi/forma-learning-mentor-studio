@@ -3,13 +3,13 @@ import { Dashboard } from "@/components/workplace/dashboard";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Forma — Your workplace, reimagined" },
+      { title: "Lerafy — Your workplace, reimagined" },
       {
         name: "description",
         content:
           "A personalized workplace for practical AI learning, guidance, and your everyday agents.",
       },
-      { property: "og:title", content: "Forma — Your workplace, reimagined" },
+      { property: "og:title", content: "Lerafy — Your workplace, reimagined" },
       {
         property: "og:description",
         content:

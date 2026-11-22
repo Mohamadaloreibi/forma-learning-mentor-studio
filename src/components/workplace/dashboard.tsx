@@ -17,7 +17,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useWorkplace } from "./context";
-import { FormaMark, PageHeading } from "./shell";
+import { PageHeading } from "./shell";
+import { BrandSymbol } from "@/components/brand";
 import art from "@/assets/forma-learning.asset.json";
 import { totalAcademyLessons } from "@/lib/practice";
 export function Dashboard() {
@@ -43,7 +44,7 @@ export function Dashboard() {
             <img src={art.url} alt="Frosted blue ribbon sculpture with mint and peach forms" />
             <div className="banner-content">
               <span className="mini-label">
-                <FormaMark small /> YOUR AI MENTOR
+                <BrandSymbol small /> YOUR AI MENTOR
               </span>
               <h2 id="workplace-mentor-title">
                 A guide for your
@@ -345,7 +346,7 @@ export function Dashboard() {
           <section className="mentor-card dashboard-mentor-context">
             <div className="mentor-card-header">
               <span className="mentor-mark">
-                <FormaMark />
+                <BrandSymbol />
               </span>
               <div>
                 <h2>Your AI Mentor</h2>

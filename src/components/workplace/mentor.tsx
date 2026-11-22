@@ -14,7 +14,8 @@ import {
   PromptInputFooter,
   PromptInputSubmit,
 } from "@/components/ai-elements/prompt-input";
-import { PageHeading, FormaMark } from "./shell";
+import { PageHeading } from "./shell";
+import { BrandSymbol } from "@/components/brand";
 import { useWorkplace } from "./context";
 import { mentorReply } from "@/lib/workplace";
 export function Mentor({ prompt }: { prompt?: string }) {
@@ -61,10 +62,10 @@ export function Mentor({ prompt }: { prompt?: string }) {
         <div className="chat-surface">
           <div className="chat-identity">
             <span className="mentor-mark">
-              <FormaMark />
+              <BrandSymbol />
             </span>
             <div>
-              <h3>Your Forma Mentor</h3>
+              <h3>Your Lerafy Mentor</h3>
               <p>Fictional conversation · A safe space to explore</p>
             </div>
           </div>
@@ -79,7 +80,7 @@ export function Mentor({ prompt }: { prompt?: string }) {
               {messages.map((m, i) => (
                 <Message from={m.role} key={i}>
                   <span className="text-xs text-muted-foreground">
-                    {m.role === "assistant" ? "Forma Mentor" : profile.name}
+                    {m.role === "assistant" ? "Lerafy Mentor" : profile.name}
                   </span>
                   <MessageContent className={m.role === "user" ? "chat-user" : ""}>
                     <MessageResponse>{m.text}</MessageResponse>
