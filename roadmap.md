@@ -23,7 +23,11 @@
 - [x] Clearly separate available demo experiences from planned automation and oversight.
 - [x] Connect exploration to the demo and prepare copy-only contact/early-access enquiries.
 - [x] Verify public navigation, demo preservation, and desktop/mobile layouts.
-- [ ] Enable enquiry delivery after the user supplies a destination email address.
+- [ ] Enable optional owner email notifications after the user supplies a destination address and verifies a sending domain.
+
+## Saved public enquiries
+- [x] Save contact and early-access enquiries privately in Cloud for owner review in the database list.
+- [x] Verify form submission, stored values, visitor privacy, and tests.
 
 ## Lerafy branding
 - [x] Prepare clean uploaded-logo variants, favicon, and app icon without generating a replacement.

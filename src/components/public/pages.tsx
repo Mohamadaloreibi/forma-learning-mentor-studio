@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -9,7 +10,7 @@ import {
   Check,
   ShieldCheck,
   Workflow,
-  Copy,
+  Send,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +19,8 @@ import workspace from "@/assets/lerafy-workspace-light.asset.json";
 import darkWorkspace from "@/assets/lerafy-workspace-dark.asset.json";
 import { PublicActions, PublicClosing } from "./site";
 import { ProductStory } from "./story";
+import { contactSchema, contactInterests } from "@/lib/contact";
+import { submitContact } from "@/lib/contact.functions";
 
 const parts = [
   {
@@ -414,21 +417,36 @@ export function AboutPage() {
 }
 export function ContactPage() {
   const [status, setStatus] = useState("");
+  const [pending, setPending] = useState(false);
+  const [requestId, setRequestId] = useState<string | null>(null);
+  const saveEnquiry = useServerFn(submitContact);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [interest, setInterest] = useState("Early access");
   async function submit(e: FormEvent) {
     e.preventDefault();
+    if (pending) return;
+    const id = requestId ?? crypto.randomUUID();
+    const result = contactSchema.safeParse({ id, name, email, message, interest });
+    if (!result.success) {
+      setStatus(result.error.issues[0]?.message ?? "Please check your details.");
+      return;
+    }
+    setRequestId(id);
+    setPending(true);
+    setStatus("");
     try {
-      await navigator.clipboard.writeText(
-        `Lerafy enquiry — ${interest}\nName: ${name}\nEmail: ${email}\n\n${message}`,
-      );
-      setStatus(
-        "Enquiry copied. Nothing has been sent or stored. Contact delivery is not connected yet.",
-      );
+      await saveEnquiry({ data: result.data });
+      setStatus("Thank you — your enquiry has been saved for the Lerafy team to review.");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setRequestId(null);
     } catch {
-      setStatus("Copy is unavailable in this browser. Nothing has been sent or stored.");
+      setStatus("Your enquiry could not be saved. Your details are still here; please try again.");
+    } finally {
+      setPending(false);
     }
   }
   return (
@@ -442,14 +460,14 @@ export function ContactPage() {
             come <em>next?</em>
           </h1>
           <p>
-            Interested in early access, or exploring what Lerafy could mean for your team? Prepare a
+            Interested in early access, or exploring what Lerafy could mean for your team? Send a
             note.
           </p>
           <div className="contact-note">
-            <span className="public-badge">PREVIEW ONLY</span>
+            <span className="public-badge">LET’S CONNECT</span>
             <p>
-              Contact delivery is not connected yet. This form copies your enquiry; it does not send
-              it, register early access, or store your details.
+              Your details will be saved privately for the Lerafy team to review. Please don’t
+              include passwords or sensitive business information.
             </p>
           </div>
         </div>
@@ -457,13 +475,14 @@ export function ContactPage() {
           <fieldset>
             <legend>I’m interested in</legend>
             <div className="contact-interests">
-              {["Early access", "A team conversation", "Something else"].map((value) => (
+              {contactInterests.map((value) => (
                 <label key={value}>
                   <input
                     type="radio"
                     name="interest"
                     value={value}
                     checked={interest === value}
+                    disabled={pending}
                     onChange={() => setInterest(value)}
                   />
                   {value}
@@ -475,6 +494,8 @@ export function ContactPage() {
           <Input
             id="contact-name"
             required
+            maxLength={100}
+            disabled={pending}
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -484,6 +505,8 @@ export function ContactPage() {
           <Input
             id="contact-email"
             required
+            maxLength={254}
+            disabled={pending}
             type="email"
             autoComplete="email"
             value={email}
@@ -494,14 +517,16 @@ export function ContactPage() {
           <Textarea
             id="contact-message"
             required
+            maxLength={5000}
+            disabled={pending}
             rows={5}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Tell us what you’re hoping to make possible."
           />
-          <Button type="submit" className="public-primary">
-            <Copy />
-            Copy enquiry
+          <Button type="submit" className="public-primary" disabled={pending}>
+            <Send />
+            {pending ? "Saving…" : "Send enquiry"}
           </Button>
           {status && (
             <p role="status" className="contact-result">

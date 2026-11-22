@@ -5,7 +5,7 @@ export const Route = createFileRoute("/contact")({
   head: () =>
     publicHead(
       "Contact — Start a conversation with Lerafy",
-      "Prepare an early-access or team enquiry about Lerafy. Contact delivery is not yet connected in this prototype.",
+      "Send an early-access or team enquiry to Lerafy, the unified AI workplace for learning, mentorship, and agent creation.",
       "/contact",
       false,
     ),
